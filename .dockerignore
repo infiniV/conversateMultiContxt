@@ -1,0 +1,13 @@
+**/__pycache__
+**/.git
+**/.gitignore
+**/.vscode
+**/.idea
+**/venv
+**/env
+**/.env
+**/*.pyc
+**/*.pyo
+**/*.pyd
+**/.Python
+**/db.sqlite3

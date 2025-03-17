@@ -1,0 +1,130 @@
+{
+  "business_config": {
+    "business_name": "Conversate",
+    "business_tagline": "AI voice assistants tailored to your business needs",
+    "business_description": "A platform that enables businesses to deploy customized voice assistants for customer support, lead generation, and operational workflows",
+    "specialist_name": "Conversate Assistant",
+    "domain": "conversate",
+    "region": "Global",
+    "language": "en",
+    "assistant_personality": "professional, concise, direct, efficient"
+  },
+  "voice_config": {
+    "welcome_message": "Welcome to {business_name}! I'm your {domain} specialist assistant. How can I assist you today?",
+    "stt_model": "whisper-large-v3-turbo",
+    "llm_model": "llama-3.3-70b",
+    "llm_temperature": 0.3,
+    "tts_voice": "nova"
+  },
+  "domain_config": {
+    "services": [
+      "voice agent customization",
+      "business integration solutions",
+      "agent deployment workflows",
+      "subscription plan information",
+      "technical support"
+    ],
+    "product_tiers": [
+      "Starter",
+      "Professional",
+      "Enterprise",
+      "Custom Solutions"
+    ],
+    "integration_options": [
+      "Web interface",
+      "Phone system",
+      "Mobile app",
+      "Custom API"
+    ],
+    "supported_business_domains": [
+      "agriculture",
+      "restaurant",
+      "healthcare",
+      "retail",
+      "finance",
+      "education",
+      "custom domains"
+    ],
+    "document_paths": ["data/conversate", "data/tech_docs"],
+    "embedding_model": "sentence-transformers/all-MiniLM-L6-v2",
+    "subscription_features": {
+      "starter": [
+        "Single voice assistant",
+        "Basic configuration options",
+        "Standard templates",
+        "Email support"
+      ],
+      "professional": [
+        "Multiple voice assistants",
+        "Advanced configuration options",
+        "Industry-specific templates",
+        "Priority support",
+        "Basic analytics"
+      ],
+      "enterprise": [
+        "Unlimited voice assistants",
+        "Full customization capabilities",
+        "Custom domain expertise",
+        "Dedicated account manager",
+        "Advanced analytics and reporting",
+        "SLA guarantees"
+      ],
+      "custom_solutions": [
+        "Custom function development",
+        "Specialized AI models",
+        "Integration with proprietary systems",
+        "White-label solutions",
+        "On-premises deployment options"
+      ]
+    },
+    "technical_capabilities": {
+      "supported_languages": [
+        "English",
+        "Spanish",
+        "French",
+        "German",
+        "Arabic",
+        "Hindi",
+        "Mandarin"
+      ],
+      "available_voices": ["Nova", "Alloy", "Shimmer", "Echo", "Fable", "Onyx"],
+      "integration_apis": ["REST API", "WebSocket", "SIP", "PSTN"],
+      "deployment_options": ["Cloud-hosted", "Private cloud", "On-premises"]
+    },
+    "onboarding_process": [
+      "Initial consultation and needs assessment",
+      "Business type and service determination",
+      "Configuration customization",
+      "Function selection and development (custom plans)",
+      "Testing and validation",
+      "Deployment and integration",
+      "Ongoing support and optimization"
+    ],
+    "customer_success_metrics": [
+      "Customer satisfaction ratings",
+      "Call resolution rates",
+      "Agent utilization metrics",
+      "Integration effectiveness",
+      "Return on investment"
+    ],
+    "business_hours": {
+      "monday": "8:00 AM - 8:00 PM",
+      "tuesday": "8:00 AM - 8:00 PM",
+      "wednesday": "8:00 AM - 8:00 PM",
+      "thursday": "8:00 AM - 8:00 PM",
+      "friday": "8:00 AM - 8:00 PM",
+      "saturday": "9:00 AM - 5:00 PM",
+      "sunday": "Closed"
+    },
+    "contact_information": {
+      "email": "info@conversate.ai",
+      "phone": "+1 (800) TALK-BOT",
+      "website": "www.conversate.ai",
+      "social_media": {
+        "linkedin": "linkedin.com/company/conversate-ai",
+        "twitter": "@conversate_ai",
+        "facebook": "facebook.com/conversateai"
+      }
+    }
+  }
+}

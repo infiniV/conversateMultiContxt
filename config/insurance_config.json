@@ -1,0 +1,360 @@
+{
+  "business_config": {
+    "business_name": "Acme Insurance",
+    "business_tagline": "Protecting what matters most with personalized care",
+    "business_description": "A leading Silicon Valley-based insurance provider offering innovative and comprehensive insurance solutions with a human touch",
+    "specialist_name": "Acme Insurance Assistant",
+    "domain": "insurance",
+    "region": "United States",
+    "language": "en",
+    "assistant_personality": "friendly, proactive, conversational, empathetic, trustworthy, knowledgeable"
+  },
+  "voice_config": {
+    "welcome_message": "Hi there! I'm your friendly Acme Insurance assistant. I'd love to help you find the perfect coverage for your needs. Do you mind if I ask you a few questions to get started?",
+    "stt_model": "whisper-large-v3-turbo",
+    "llm_model": "llama-3.3-70b",
+    "llm_temperature": 0.4,
+    "tts_voice": "nova"
+  },
+  "domain_config": {
+    "services": [
+      "auto insurance",
+      "home insurance",
+      "life insurance",
+      "health insurance",
+      "renters insurance",
+      "business insurance",
+      "umbrella insurance",
+      "pet insurance"
+    ],
+    "customer_types": [
+      "individual",
+      "family",
+      "small business",
+      "corporation",
+      "senior citizens",
+      "young adults",
+      "property owners"
+    ],
+    "coverage_options": [
+      "liability coverage",
+      "comprehensive coverage",
+      "collision coverage",
+      "personal injury protection",
+      "uninsured motorist coverage",
+      "medical payments coverage",
+      "property damage coverage",
+      "flood insurance",
+      "earthquake insurance",
+      "term life insurance",
+      "whole life insurance",
+      "disability insurance"
+    ],
+    "document_paths": ["data/insurance"],
+    "embedding_model": "sentence-transformers/all-MiniLM-L6-v2",
+    "insurance_plans": {
+      "auto": [
+        {
+          "name": "Basic Coverage",
+          "description": "Essential liability protection for budget-conscious drivers",
+          "monthly_premium_range": "$50-$100",
+          "coverage_details": "Meets state minimum requirements for liability"
+        },
+        {
+          "name": "Standard Coverage",
+          "description": "Balanced protection with liability and some vehicle coverage",
+          "monthly_premium_range": "$100-$175",
+          "coverage_details": "Includes liability, collision with deductible, roadside assistance"
+        },
+        {
+          "name": "Premium Protection",
+          "description": "Comprehensive protection for your vehicle and liability needs",
+          "monthly_premium_range": "$175-$250",
+          "coverage_details": "Full coverage with lower deductibles, rental car reimbursement"
+        },
+        {
+          "name": "Full Comprehensive",
+          "description": "Maximum protection for high-value vehicles and complete peace of mind",
+          "monthly_premium_range": "$250+",
+          "coverage_details": "Everything in Premium plus gap insurance, new car replacement, vanishing deductible"
+        }
+      ],
+      "home": [
+        {
+          "name": "Essential Protection",
+          "description": "Basic coverage for homeowners on a budget",
+          "monthly_premium_range": "$75-$150",
+          "coverage_details": "Dwelling coverage, basic liability, limited personal property"
+        },
+        {
+          "name": "Home Shield",
+          "description": "Standard coverage for most homeowners",
+          "monthly_premium_range": "$150-$250",
+          "coverage_details": "Enhanced dwelling coverage, increased liability, standard personal property"
+        },
+        {
+          "name": "Premium Home Care",
+          "description": "Enhanced coverage for valuable homes and possessions",
+          "monthly_premium_range": "$250-$350",
+          "coverage_details": "High dwelling limits, extended replacement cost, enhanced personal property"
+        },
+        {
+          "name": "Elite Home Protection",
+          "description": "Comprehensive coverage for luxury homes and valuables",
+          "monthly_premium_range": "$350+",
+          "coverage_details": "Guaranteed replacement cost, high liability limits, scheduled personal property"
+        }
+      ],
+      "life": [
+        {
+          "name": "Term Life Basic",
+          "description": "Affordable term life insurance for essential needs",
+          "monthly_premium_range": "$20-$50",
+          "coverage_details": "10-30 year terms, death benefit only"
+        },
+        {
+          "name": "Term Life Plus",
+          "description": "Enhanced term life with additional benefits",
+          "monthly_premium_range": "$50-$100",
+          "coverage_details": "10-30 year terms, death benefit, convertibility options"
+        },
+        {
+          "name": "Whole Life Standard",
+          "description": "Permanent life insurance with cash value accumulation",
+          "monthly_premium_range": "$100-$300",
+          "coverage_details": "Lifetime coverage, guaranteed cash value growth, fixed premiums"
+        },
+        {
+          "name": "Whole Life Premium",
+          "description": "Premium permanent life insurance with enhanced benefits",
+          "monthly_premium_range": "$300+",
+          "coverage_details": "Lifetime coverage, accelerated cash value, dividend options"
+        }
+      ],
+      "health": [
+        {
+          "name": "Essential Care",
+          "description": "Basic health coverage for preventative care and emergencies",
+          "monthly_premium_range": "$200-$400",
+          "coverage_details": "Preventative care, emergency services, high deductible"
+        },
+        {
+          "name": "Family Protection Plan",
+          "description": "Balanced health coverage for families",
+          "monthly_premium_range": "$400-$700",
+          "coverage_details": "Comprehensive coverage with moderate deductibles, dental for children"
+        },
+        {
+          "name": "Comprehensive Health",
+          "description": "Robust health coverage for individuals and families",
+          "monthly_premium_range": "$700-$1000",
+          "coverage_details": "Low deductible, expanded network, prescription coverage, some dental and vision"
+        },
+        {
+          "name": "Elite Health Coverage",
+          "description": "Premium health coverage with maximum benefits",
+          "monthly_premium_range": "$1000+",
+          "coverage_details": "Lowest deductibles, nationwide network, comprehensive prescription, dental, and vision"
+        }
+      ]
+    },
+    "discounts_available": [
+      {
+        "name": "multi-policy",
+        "description": "Save up to 25% when bundling multiple policies",
+        "eligibility": "Available to all customers with 2+ policies"
+      },
+      {
+        "name": "safe driver",
+        "description": "Save up to 30% for clean driving records",
+        "eligibility": "No accidents or tickets in the past 3 years"
+      },
+      {
+        "name": "good student",
+        "description": "Save up to 15% for students with good grades",
+        "eligibility": "Full-time students with 3.0 GPA or higher"
+      },
+      {
+        "name": "senior citizen",
+        "description": "Save up to 10% for seniors",
+        "eligibility": "Customers age 65+"
+      },
+      {
+        "name": "military",
+        "description": "Save up to 15% for active or retired military",
+        "eligibility": "Active duty, veterans, and military families"
+      },
+      {
+        "name": "homeowner",
+        "description": "Save up to 5% on auto insurance for homeowners",
+        "eligibility": "Customers who own their home"
+      },
+      {
+        "name": "paperless billing",
+        "description": "Save 5% for enrolling in paperless billing",
+        "eligibility": "Available to all customers"
+      },
+      {
+        "name": "automatic payment",
+        "description": "Save 5% when setting up automatic payments",
+        "eligibility": "Available to all customers"
+      },
+      {
+        "name": "safety features",
+        "description": "Save up to 10% for vehicles with advanced safety features",
+        "eligibility": "Vehicles with qualifying safety technology"
+      },
+      {
+        "name": "loyalty",
+        "description": "Save up to 20% after 5+ years with Acme",
+        "eligibility": "Long-term Acme Insurance customers"
+      }
+    ],
+    "qualification_questions": {
+      "auto": [
+        "How many vehicles do you need to insure?",
+        "What is the make, model, and year of your vehicle(s)?",
+        "How many drivers are in your household?",
+        "What's your driving history like over the past 3-5 years?",
+        "How many miles do you drive annually?",
+        "Do you use your vehicle for personal or business purposes?",
+        "Are you interested in basic liability or full comprehensive coverage?",
+        "Would you like to bundle this with any other insurance products?"
+      ],
+      "home": [
+        "What is your home address?",
+        "What is the square footage of your home?",
+        "When was your home built?",
+        "What type of home is it (single-family, condo, etc.)?",
+        "Do you have any security systems installed?",
+        "Have you made any recent renovations?",
+        "Do you have any features like a pool or trampoline?",
+        "Have you had any previous claims on your home?"
+      ],
+      "life": [
+        "What is your age?",
+        "Do you smoke or use tobacco products?",
+        "Do you have any pre-existing health conditions?",
+        "What is your desired coverage amount?",
+        "Are you interested in term life or whole life insurance?",
+        "How long do you need coverage for?",
+        "Who would be your beneficiaries?",
+        "Do you want a policy that builds cash value over time?"
+      ],
+      "health": [
+        "Are you looking for individual or family coverage?",
+        "How many family members need to be covered?",
+        "Do you have any pre-existing conditions?",
+        "What level of coverage are you looking for?",
+        "Do you have any preferred healthcare providers?",
+        "How much can you afford for monthly premiums?",
+        "Do you need dental or vision coverage as well?",
+        "How often do you typically visit healthcare providers?"
+      ]
+    },
+    "claim_process": [
+      "Report the incident through our mobile app, website, or by calling 1-800-ACME-911",
+      "Provide necessary documentation including photos, police reports, and other relevant information",
+      "A dedicated claims adjuster will be assigned within 24 hours",
+      "Claim assessment with possible on-site inspection",
+      "Claim approval/denial decision typically within 5-7 business days",
+      "Payment processing within 48 hours of approval",
+      "Follow-up and feedback to ensure customer satisfaction"
+    ],
+    "company_history": {
+      "founded": "1985",
+      "founder": "Michael J. Acme",
+      "headquarters": "123 Innovation Drive, Silicon Valley, CA 94025",
+      "mission_statement": "To provide peace of mind through innovative insurance solutions that protect what matters most to our customers",
+      "values": [
+        "Customer-first approach",
+        "Integrity in all interactions",
+        "Innovation in products and services",
+        "Commitment to community",
+        "Transparency in operations"
+      ],
+      "milestones": [
+        {
+          "year": "1985",
+          "event": "Founded as a small auto insurance provider in Silicon Valley"
+        },
+        {
+          "year": "1995",
+          "event": "Expanded to offer home and life insurance products"
+        },
+        {
+          "year": "2005",
+          "event": "Launched industry-first digital claims processing system"
+        },
+        {
+          "year": "2015",
+          "event": "Reached 1 million customers nationwide"
+        },
+        {
+          "year": "2023",
+          "event": "Introduced AI-powered risk assessment and customer service"
+        }
+      ],
+      "awards": [
+        "Best Customer Service Award 2023",
+        "Top Insurance Provider in California 2022",
+        "Innovation in Digital Insurance 2021",
+        "Best Places to Work 2020",
+        "Community Impact Award 2019"
+      ]
+    },
+    "business_hours": {
+      "monday": "8:00 AM - 8:00 PM PST",
+      "tuesday": "8:00 AM - 8:00 PM PST",
+      "wednesday": "8:00 AM - 8:00 PM PST",
+      "thursday": "8:00 AM - 8:00 PM PST",
+      "friday": "8:00 AM - 8:00 PM PST",
+      "saturday": "9:00 AM - 5:00 PM PST",
+      "sunday": "10:00 AM - 3:00 PM PST"
+    },
+    "contact_information": {
+      "toll_free": "1-800-ACME-INS (1-800-226-3467)",
+      "local_number": "(650) 555-1234",
+      "email": "support@acmeinsurance.com",
+      "website": "www.acmeinsurance.com",
+      "headquarters_address": "123 Innovation Drive, Silicon Valley, CA 94025",
+      "social_media": {
+        "linkedin": "linkedin.com/company/acme-insurance",
+        "twitter": "@acmeinsurance",
+        "facebook": "facebook.com/acmeinsurance",
+        "instagram": "@acmeinsurance"
+      }
+    },
+    "emergency_services": {
+      "claims_hotline": "1-800-ACME-911 (1-800-226-3911)",
+      "roadside_assistance": "1-800-ACME-HELP (1-800-226-3435)",
+      "natural_disaster_support": "1-800-ACME-SOS (1-800-226-3767)"
+    },
+    "trust_building_elements": {
+      "financial_strength_rating": "A+ (Superior) by A.M. Best",
+      "years_in_business": 38,
+      "customers_served": "Over 2 million",
+      "claims_paid_annually": "$1.2 billion",
+      "customer_satisfaction": "96%",
+      "data_security": "SOC 2 Type II Certified",
+      "testimonials_link": "www.acmeinsurance.com/testimonials",
+      "guarantee": "30-day money-back guarantee on all new policies"
+    },
+    "proactive_conversation_starters": [
+      "I noticed you're from California. Did you know we have special earthquake coverage options for California residents?",
+      "Many of our customers save over $500 by bundling their auto and home insurance. Would you like to explore bundle options?",
+      "Based on what you've shared, you might qualify for our safe driver discount. Can I tell you more about it?",
+      "With a family your size, our Family Protection Plan might be a perfect fit. Would you like to hear the details?",
+      "Have you considered umbrella insurance for additional liability protection beyond your standard policies?",
+      "Many homeowners don't realize their standard policy doesn't cover flooding. Would you like to learn about our flood insurance options?",
+      "I notice you haven't mentioned life insurance. Would you like me to explain how affordable term life coverage can be?"
+    ],
+    "educational_resources": {
+      "insurance_basics": "www.acmeinsurance.com/learn/insurance-101",
+      "savings_calculator": "www.acmeinsurance.com/tools/savings-calculator",
+      "coverage_comparison": "www.acmeinsurance.com/tools/coverage-comparison",
+      "claim_filing_guides": "www.acmeinsurance.com/claims/how-to-file",
+      "life_insurance_estimator": "www.acmeinsurance.com/tools/life-insurance-needs"
+    }
+  }
+}

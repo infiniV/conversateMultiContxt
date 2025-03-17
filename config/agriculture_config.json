@@ -1,0 +1,35 @@
+{
+  "business_config": {
+    "business_name": "Farmovation",
+    "business_tagline": "Empowering Pakistani farmers with modern agricultural knowledge",
+    "business_description": "A company helping Pakistani farmers improve yields through data-driven agriculture",
+    "specialist_name": "Farmovation Assistant",
+    "domain": "agriculture",
+    "region": "Pakistan",
+    "language": "en",
+    "assistant_personality": "professional, friendly, helpful, knowledgeable"
+  },
+  "voice_config": {
+    "welcome_message": "Welcome to {business_name}! I'm your {domain} specialist assistant. I can help you with {services}. How can I assist with your {domain} needs today?",
+    "stt_model": "whisper-large-v3-turbo",
+    "llm_model": "llama-3.3-70b",
+    "llm_temperature": 0.7,
+    "tts_voice": "nova"
+  },
+  "domain_config": {
+    "services": [
+      "crop recommendations",
+      "pest management",
+      "water conservation",
+      "farming best practices"
+    ],
+    "growing_seasons": ["Rabi (winter)", "Kharif (summer)"],
+    "soil_types": ["sandy loam", "clay", "silty"],
+    "key_crops": ["wheat", "rice", "cotton", "sugarcane", "maize"],
+    "irrigation_methods": ["flood", "drip", "sprinkler", "furrow"],
+    "knowledge_sources": [
+      "Pakistani agricultural research institutes",
+      "international best practices"
+    ]
+  }
+}
