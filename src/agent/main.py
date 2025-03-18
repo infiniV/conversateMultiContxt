@@ -4,7 +4,7 @@ import logging
 import importlib
 import sys
 import traceback
-from typing import Dict, Any, Optional
+from typing import  Optional
 from pathlib import Path
 
 from livekit.agents import (
@@ -35,18 +35,31 @@ from src.utils.config import (
     get_domain_config,
     reload_config
 )
+import pprint
 
 # Set up logging
 logging.basicConfig(
     level=logging.INFO,
     format="%(asctime)s - %(name)s - %(levelname)s - %(message)s"
 )
-
-
 # Get business configuration
 business_config = get_business_config()
 logger = logging.getLogger(f"{business_config['business_name'].lower()}-assistant")
 logger.setLevel(logging.INFO)
+
+ # Log configurations
+logger.info("Current configurations:")
+logger.info("Business Config:")
+logger.info(pprint.pformat(business_config, indent=2))
+        
+voice_config = get_voice_config()
+logger.info("Voice Config:")
+logger.info(pprint.pformat(voice_config, indent=2))
+        
+domain_config = get_domain_config()
+logger.info("Domain Config:")
+logger.info(pprint.pformat(domain_config, indent=2))
+
 
 # Ensure data directory exists
 data_dir = Path(__file__).parent.parent.parent / "data"

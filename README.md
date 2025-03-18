@@ -109,12 +109,6 @@ pip install -r requirements.txt
 
 ## Usage
 
-Generate test config:
-
-```bash
-python src/utils/config_generator.py -t insurance -n "Test Insurance Co"
-```
-
 Launch the agent:
 
 ```bash
@@ -129,18 +123,6 @@ python src/agent/main.py --config config/insurance_config.json
 | Agriculture | Farming assistance        | `agriculture_config.json` |
 | Restaurant  | Food service management   | `restaurant_config.json`  |
 | Technology  | Tech support services     | `technology_config.json`  |
-
-## Example Function Call
-
-```python
-# Check vehicle eligibility
-await agent.check_vehicle_eligibility(
-    vehicle_year=2020,
-    vehicle_make="Toyota",
-    vehicle_model="Camry",
-    mileage=50000
-)
-```
 
 ## License
 
