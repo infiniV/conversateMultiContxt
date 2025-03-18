@@ -1,27 +1,97 @@
 # Multi-Context Conversate Agent
 
-An enterprise-grade voice assistant platform powered by LiveKit that adapts to multiple business contexts while maintaining contextual awareness and comprehensive information tracking.
+An enterprise-grade voice assistant platform powered by LiveKit that adapts to multiple business contexts.
 
-## Key Features
+## Configuration Structure
 
-- **Adaptive Context Handling**
+All business configurations must follow this structure:
 
-  - Dynamic business domain adaptation
-  - Real-time context switching
-  - Comprehensive information validation
+```json
+{
+  "business_config": {
+    "business_name": "String (required)",
+    "business_tagline": "String (required)",
+    "business_description": "String (required)",
+    "specialist_name": "String (required)",
+    "domain": "String (required) - One of: insurance, agriculture, restaurant, technology",
+    "region": "String (required)",
+    "language": "String (required) - ISO code",
+    "assistant_personality": "String (comma-separated traits)"
+  },
+  "voice_config": {
+    "welcome_message": "String (required)",
+    "stt_model": "String (required)",
+    "llm_model": "String (required)",
+    "llm_temperature": "Number (0.0-1.0)",
+    "tts_voice": "String (required)"
+  },
+  "required_information": {
+    "customer_details": {
+      "basic": ["Array of required fields"],
+      "additional": ["Array of optional fields"],
+      "validation_rules": {
+        "field_name": "Regex validation pattern"
+      }
+    },
+    "domain_specific_details": {
+      "basic": ["Array of required fields"],
+      "additional": ["Array of optional fields"],
+      "validation_rules": {
+        "field_name": "Regex validation pattern"
+      }
+    }
+  },
+  "edge_cases": {
+    "case_category": {
+      "case_name": {
+        "property": "value",
+        "conditions": ["Array of conditions"],
+        "actions": ["Array of actions"]
+      }
+    }
+  },
+  "information_collection_flow": {
+    "sequence": [
+      {
+        "step": "String (step identifier)",
+        "required_fields": ["Array of fields"],
+        "next_step": "String (next step identifier)"
+      }
+    ],
+    "fallback_actions": {
+      "action_type": {
+        "action": "String (action to take)",
+        "max_attempts": "Number",
+        "timeout_minutes": "Number"
+      }
+    }
+  },
+  "domain_config": {
+    "services": ["Array of services"]
+    // Domain-specific configuration items
+  },
+  "conversation_flows": {
+    "flow_name": [
+      {
+        "id": "String (step identifier)",
+        "assistant_message": "String (message to speak)",
+        "expected_responses": [
+          {
+            "type": "String (response type)",
+            "next": "String (next step)"
+          }
+        ],
+        "save_to_db": {
+          "table": "String (table name)",
+          "fields": ["Array of fields to save"]
+        }
+      }
+    ]
+  }
+}
+```
 
-- **Voice Processing**
-
-  - Real-time voice interaction
-  - High-accuracy speech recognition
-  - Natural language processing
-
-- **Information Management**
-  - Structured data collection
-  - Edge case handling
-  - Progressive information gathering
-
-## Installation
+## Quick Start
 
 ```bash
 # Clone repository
@@ -37,65 +107,30 @@ source .venv/bin/activate  # Linux/Mac
 pip install -r requirements.txt
 ```
 
-## Configuration
+## Usage
 
-### Environment Setup
-
-Required environment variables in `.env`:
-
-```ini
-LIVEKIT_URL=ws://your-livekit-server
-BUSINESS_TYPE=insurance
-ENABLE_FUNCTION_CALLING=true
-OPENAI_API_KEY=your-key
-DEEPGRAM_API_KEY=your-key
-```
-
-### Business Configuration
-
-Generate business-specific configuration:
+Generate test config:
 
 ```bash
-python create_config.py --type insurance --name "Your Business"
+python src/utils/config_generator.py -t insurance -n "Test Insurance Co"
 ```
-
-## Usage
 
 Launch the agent:
 
 ```bash
-python src/agent/main.py
+python src/agent/main.py --config config/insurance_config.json
 ```
 
 ## Business Domains
 
-Currently supported domains:
+| Domain      | Description               | Configuration             |
+| ----------- | ------------------------- | ------------------------- |
+| Insurance   | Vehicle warranty services | `insurance_config.json`   |
+| Agriculture | Farming assistance        | `agriculture_config.json` |
+| Restaurant  | Food service management   | `restaurant_config.json`  |
+| Technology  | Tech support services     | `technology_config.json`  |
 
-| Domain      | Description               | Configuration                    |
-| ----------- | ------------------------- | -------------------------------- |
-| Insurance   | Vehicle warranty services | `config/insurance_config.json`   |
-| Agriculture | Farming assistance        | `config/agriculture_config.json` |
-| Restaurant  | Food service management   | `config/restaurant_config.json`  |
-| Technology  | Tech support services     | `config/technology_config.json`  |
-
-## Architecture
-
-```
-multicontext-conversate-agent/
-├── config/                 # Domain configurations
-├── src/
-│   ├── agent/             # Core agent logic
-│   ├── functions/         # Domain-specific functions
-│   └── utils/             # Shared utilities
-├── data/                  # Domain data storage
-└── tests/                 # Test suites
-```
-
-## Development
-
-### Function Implementation
-
-Example function usage:
+## Example Function Call
 
 ```python
 # Check vehicle eligibility
@@ -105,42 +140,7 @@ await agent.check_vehicle_eligibility(
     vehicle_model="Camry",
     mileage=50000
 )
-
-# Save customer information
-await agent.save_customer_lead(
-    first_name="John",
-    last_name="Doe",
-    phone="1234567890"
-)
 ```
-
-### Testing
-
-Run the test suite:
-
-```bash
-pytest tests/
-```
-
-## Contributing
-
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/name`)
-3. Commit changes (`git commit -am 'Add feature'`)
-4. Push branch (`git push origin feature/name`)
-5. Open Pull Request
-
-## Documentation
-
-- [API Reference](docs/api.md)
-- [Domain Configuration Guide](docs/domain-config.md)
-- [Function Development Guide](docs/function-dev.md)
-
-## Support
-
-- GitHub Issues: [Open Issue](https://github.com/yourusername/multicontext-conversate-agent/issues)
-- Email: support@conversate.ai
-- Documentation: [Wiki](https://github.com/yourusername/multicontext-conversate-agent/wiki)
 
 ## License
 
