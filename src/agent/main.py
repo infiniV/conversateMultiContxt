@@ -276,4 +276,9 @@ def parse_args():
 
 
 if __name__ == "__main__":
-    cli.run_app(WorkerOptions(entrypoint_fnc=entrypoint, prewarm_fnc=prewarm,num_idle_processes=1))
+    cli.run_app(WorkerOptions(
+        entrypoint_fnc=entrypoint,
+        prewarm_fnc=prewarm,
+        num_idle_processes=1,
+        initialize_process_timeout=30  # Increased from default 10 to 30 seconds
+    ))
