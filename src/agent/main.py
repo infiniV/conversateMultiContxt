@@ -159,9 +159,8 @@ def load_function_context() -> Optional[llm.FunctionContext]:
         logger.debug(traceback.format_exc())
         return None
 
-prox=JobProcess()
-prox.userdata["fnc_ctx"] = load_function_context()
-if prox.userdata["fnc_ctx"]:
+prox = load_function_context()
+if prox:
         logger.info("Function context loaded successfully")
 else:
         logger.info("No function context available") 
@@ -181,9 +180,7 @@ async def entrypoint(ctx: JobContext):
         
         # Get configuration
         voice_config = get_voice_config()
-        domain_config = get_domain_config()
-        
-        # Create system prompt using configuration
+        # domain_config = get_domain_config()
         system_prompt = get_system_prompt()
         initial_ctx = llm.ChatContext().append(
             text=system_prompt,
@@ -198,7 +195,7 @@ async def entrypoint(ctx: JobContext):
         
         # Set up VAD from prewarmed models or create a new one if not available
         vad = ctx.proc.userdata.get("vad")
-        fnc_ctx=ctx.proc.userdata.get("fnc_ctx")
+        fnc_ctx=prox
         if vad is None:
             logger.info("VAD not prewarmed, loading now")
             vad = silero.VAD.load()
@@ -222,6 +219,9 @@ async def entrypoint(ctx: JobContext):
         # Setup metrics collection
         usage_collector = metrics.UsageCollector()
 
+        @agent.on("user_speech_committed")
+       
+            
         @agent.on("metrics_collected")
         def _on_metrics_collected(mtrcs: metrics.AgentMetrics):
             metrics.log_metrics(mtrcs)
@@ -240,7 +240,7 @@ async def entrypoint(ctx: JobContext):
         welcome_message = get_welcome_message()
         
         logger.info(f"Starting conversation with welcome message: {welcome_message}")
-        await agent.say(welcome_message)
+        await agent.say(welcome_message,allow_interruptions=False)
         
         # Stay alive
         while True:

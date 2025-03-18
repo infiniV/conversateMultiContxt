@@ -1,0 +1,12 @@
+# CCS Insurance Information
+
+This is a sample document for CCS Insurance.
+
+Business Description: A company specializing in providing extended warranty coverage for automobiles
+
+## Services
+
+- warranty renewal qualification
+- warranty plan options
+- claim processing
+- warranty transfers

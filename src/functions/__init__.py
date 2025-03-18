@@ -24,7 +24,11 @@ from llama_index.vector_stores.chroma import ChromaVectorStore
 from llama_index.embeddings.huggingface import HuggingFaceEmbedding
 import chromadb
 from src.utils.config import get_domain_config, get_business_config
+from llama_index.llms.groq import Groq
+from llama_index.core.settings import Settings
 
+grop=Groq(model="llama-3.1-8b-instant")
+Settings.llm=grop
 class BaseBusinessFnc(llm.FunctionContext):
     """
     Base function context class that can be extended for any business type.
@@ -353,13 +357,9 @@ class BaseBusinessFnc(llm.FunctionContext):
             }
 
 from .agriculture_functions import AgricultureAssistantFnc
-from .restaurant_functions import RestaurantAssistantFnc
-from .conversate_functions import ConversateAssistantFnc
 from .insurance_functions import InsuranceAssistantFnc
 
 __all__ = [
     "AgricultureAssistantFnc",
-    "InsuranceAssistantFnc",
-    "RestaurantAssistantFnc",
     "ConversateAssistantFnc"
 ]

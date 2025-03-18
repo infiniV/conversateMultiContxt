@@ -22,6 +22,24 @@ def load_config_from_file(business_type: str = None, config_path: str = None) ->
     Returns:
         Dict containing the configuration
     """
+    config_type = os.environ.get("CONFIG_TYPE")
+    config_file_path = os.environ.get("CONFIG_FILE_PATH")
+    
+    if config_type and config_file_path:
+        logger.info(f"Loading {config_type} configuration from {config_file_path}")
+        try:
+            full_path = Path(__file__).parent.parent.parent / config_file_path
+            if full_path.exists():
+                with open(full_path, 'r') as f:
+                    return json.load(f)
+        except Exception as e:
+            logger.error(f"Error loading specified config: {e}")
+    
+    # Fallback to business type loading
+    business_type = business_type or os.environ.get("BUSINESS_TYPE")
+    if not business_type:
+        raise ValueError("Neither CONFIG_TYPE nor BUSINESS_TYPE environment variables are set")
+
     # Use direct config path if provided (from web app deployment)
     if config_path and os.path.exists(config_path):
         try:
@@ -366,6 +384,19 @@ def get_default_config(business_type: str) -> Dict[str, Any]:
             }
         }
 
+def get_function_module(business_type: str = None) -> Optional[str]:
+    """Get the appropriate function module based on configuration"""
+    config_type = os.environ.get("CONFIG_TYPE", business_type)
+    if not config_type:
+        return None
+        
+    function_file = f"{config_type.lower()}_functions.py"
+    function_path = Path(__file__).parent.parent / "functions" / function_file
+    
+    if function_path.exists():
+        return f"src.functions.{config_type.lower()}_functions"
+    return None
+
 # Try loading from environment variables first
 config_path = os.environ.get("CONFIG_FILE_PATH")
 business_type = os.environ.get("BUSINESS_TYPE")
@@ -383,16 +414,13 @@ except Exception as e:
 
 # System prompt template for the assistant
 SYSTEM_PROMPT_TEMPLATE = """
-You are a {domain} specialist assistant for {business_name}, {business_description}. 
-Your name is {specialist_name}. Your interface with users will be voice-based.
-You provide expert {domain} advice on {services_list} 
-specifically tailored to {region}. You are knowledgeable about {domain_specific_knowledge}.
-When users ask questions, provide brief, practical advice they can implement.
-Keep your responses concise and to the point. Avoid redundancy and unnecessary explanations.
-If the question requires a detailed answer, break it into brief, digestible points.
-When performing function calls, briefly let the user know that you are retrieving specific information.
-Be {personality_traits} while maintaining professional {domain} expertise.
-Always refer to yourself as the {specialist_name} from {business_name}.
+You are a {specialist_name} providing expert {domain} assistance. Focus on {services_list} for {region}.
+Use available functions to:
+- Check warranty eligibility and coverage options
+- Handle customer inquiries and information
+- Process applications and save records
+- Schedule callbacks and follow-ups
+Maintain a {personality_traits} approach.
 """
 
 def get_system_prompt() -> str:
